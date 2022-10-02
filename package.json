@@ -1,0 +1,30 @@
+{
+    "name": "renuion-api",
+    "version": "1.0.0",
+    "description": "",
+    "main": "app.js",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "author": "vishal",
+    "license": "ISC",
+    "dependencies": {
+        "app-module-path": "^2.2.0",
+        "bcryptjs": "^2.4.3",
+        "body-parser": "^1.19.0",
+        "connect-redis": "^5.2.0",
+        "cookie-parser": "^1.4.5",
+        "exceljs": "^4.2.1",
+        "express": "^4.17.1",
+        "express-session": "^1.17.1",
+        "express-useragent": "^1.0.15",
+        "express-zip": "^3.0.0",
+        "jsonwebtoken": "^8.5.1",
+        "minimist": "^1.2.5",
+        "moment": "^2.29.1",
+        "mongoose": "^6.6.3",
+        "path": "^0.12.7",
+        "redis": "^3.1.2",
+        "uuid": "^9.0.0"
+    }
+}
