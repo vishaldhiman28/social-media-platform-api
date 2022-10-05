@@ -19,8 +19,8 @@ userSession.name       = 'renuion.api';
 /* MONGODB CONFIG */
 const mongodb = { };
 
-mongodb.host   = 'localhost';
-mongodb.port   = 27017;
+mongodb.host   = 'mongo';
+mongodb.port   = 27018;
 mongodb.dbName = 'reunion';
 
 //not storing in database for now, we can do that later as per requirements
