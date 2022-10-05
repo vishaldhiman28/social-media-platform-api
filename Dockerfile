@@ -1,6 +1,6 @@
-FROM node:16
+FROM node:latest
 
-
+RUN mkdir -p /usr/src/app
 # Create app directory
 WORKDIR /usr/src/app
 
