@@ -1,9 +1,9 @@
 const express       = require ('express');
 const {v4 : uuidv4} = require('uuid')
-const authController   = require ('controllers/auth'); 
-const followController = require ('controllers/follow'); 
-const userController   = require ('controllers/user');
-const postsController  = require ('controllers/posts');
+const authController       = require ('controllers/auth'); 
+const followController     = require ('controllers/follow'); 
+const userController       = require ('controllers/user');
+const postsController      = require ('controllers/posts');
 
 const routes = { };
 
@@ -15,9 +15,24 @@ routes.init = (appServer) => {
 		next();
 	});
 
-	//to check if server is up
-	appServer.get ('/ping', (req, res, next) => { 
-		return res.send ('pong').status (200);
+	/* 
+		these are some of unexpted route we can define seperate controller for them 
+		for now adding response in here itself
+	*/
+	appServer.get ('/', (req, res) => { 
+		return res.send ('NOT FOUND').status (404);
+	});
+
+	appServer.get ('/api', (req, res) => {
+		return  res.send ('NOT FOUND').status (404);
+	});
+
+	appServer.post ('/', (req, res) => {
+		return  res.send ('NOT FOUND').status (404);
+	});
+
+	appServer.post ('/api', (req, res) => {
+		return  res.send ('NOT FOUND').status (404);
 	});
 
 	appServer.post ('/api/authenicate', authController.authenticate);
@@ -39,6 +54,7 @@ routes.init = (appServer) => {
 	appServer.get    ('/api/posts/:id',    postsController.findSinglePost);
 	appServer.get    ('/api/all_posts',    postsController.findAllPosts)
 
+	appServer
 	return;
 };
 

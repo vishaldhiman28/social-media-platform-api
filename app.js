@@ -12,12 +12,6 @@ const {
 
 const args = minimist (process.argv.slice (2));
 
-/*
- * Let https reqs work with self signed certs
- * only for development env */
-if (args.env === 'development')
-    process.env ["NODE_TLS_REJECT_UNAUTHORIZED"] = 0;
-
 const routes = require ('routes');
 const server = express ();
 
