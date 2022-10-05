@@ -6,7 +6,7 @@ let followerModel = {};
 let DBModel = null;
 
 db.emitter.on ('db-connected', () => {
-	var connection = db.db();
+	let connection = db.db();
 
 	DBModel = connection.model ('follower', followerSchema);
 });
@@ -24,7 +24,7 @@ followerModel.follow = async (inputData) => {
 
 followerModel.unFollow = async (inputData) => {
     try {
-	    let responseData = await DBModel.deleteOne (inputData);
+	    let responseData = await DBModel.findOneAndDelete (inputData);
         return responseData;
     }
     catch (err) { 

@@ -5,10 +5,7 @@ const ErrorSerialize  = require ('errorSerialize');
 const contoller = { };
 
 contoller.authenticate = async (req, res) => {
-	/*
-		user information from req
-	*/
-	let reqId = req.id;
+	let reqId    = req.id;
 	let email    = req.body.email;
 	let password = req.body.password;
 

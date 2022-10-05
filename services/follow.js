@@ -61,8 +61,7 @@ follow.removeFollower = async ({ reqId, followeeId, userId }) => {
 		}
 
 		/*
-			we can add a check here, to see if given followee id is in our system or not.
-			right now I am assuming we have followee in our system
+			we can add a check here, to see if user follows given followee or not 
 		*/
 
 		await followerModel.unFollow ({
