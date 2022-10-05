@@ -290,9 +290,11 @@ posts.findSinglePost = async ({ reqId, postId, userId }) => {
 		responseData.statusCode = 200;
         responseData.msg        = `Single Post fetched.`;
         responseData.result     = {
-            ...postWithComments,
-            likes : allLikes ? allLikes.length : '',
+            ...postWithComments
         }
+
+        if (postWithComments && Object.keys (postWithComments).length && allLikes)
+            responseData.result['likes'] = likes.length;
 
 		console.debug ({ reqId, data : responseData }, 'single post find success.');
 
