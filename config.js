@@ -30,6 +30,14 @@ const dummyUserCredentials = {
 	password : '$2y$10$PULolPn5CbvGfmDpHKH8uOTHx1cUS2SAbgnWiyE8OZd2CrrZXH5qm', //hashed password legion$@1290
 }
 
+const followees = [
+	'vishal',
+	'tom',
+	'rabada',
+	'messi',
+	'ronaldo'
+]
+
 const errorConfig = {
 	400 : 'ERR_BAD_REQUEST',
 	401 : 'ERR_UNAUHTORISED',
@@ -49,5 +57,6 @@ module.exports = {
 	mongodbConfig        : mongodb,
 	dummyUserCredentials : dummyUserCredentials,
 	errorConfig          : errorConfig,
-	tokenConifg          : tokenConifg
+	tokenConifg          : tokenConifg,
+	followees            : followees
 };

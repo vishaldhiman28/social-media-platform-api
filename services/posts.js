@@ -83,14 +83,26 @@ posts.deletePost = async ({ reqId, postId, userId }) => {
             return responseData;
 		}
 
+        /*
+            we can add check if given post with id exists in the system or not
+        */  
+
         let databaseResult = await postsModel.removePost ({
             id : postId,
 		});
 
+        let databaseResultComments = await commentsModel.deleteComments ({
+            postId
+        })
+
+        let databaseResultLikesUnlikes = await likeUnlikesModel.deleteLikesUnlikes ({
+            postId
+        })
+
 		responseData.statusCode = 200;
         responseData.msg        = `Post Deleted`;
 
-		console.debug ({ reqId, data : responseData, databaseResult }, 'post delete success.');
+		console.debug ({ reqId, data : responseData, databaseResult, databaseResultComments, databaseResultLikesUnlikes }, 'post delete success.');
 
 		return responseData;
 	}

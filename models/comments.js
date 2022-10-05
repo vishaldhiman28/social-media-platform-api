@@ -22,4 +22,15 @@ commentsModel.addComment = async (inputData) => {
     }
 }
 
+commentsModel.deleteComments = async (inputData) => {
+    try {
+	    let responseData = await DBModel.delete (inputData);
+        return responseData;
+    }
+    catch (err) { 
+        console.error ( { err : err.stack,  data : { inputData } }, 'unknown error occured during delete comments op for comment model in the db');
+        throw "delete comments op failed for comment model";
+    }
+}
+
 module.exports = commentsModel;

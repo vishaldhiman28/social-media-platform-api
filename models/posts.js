@@ -93,8 +93,6 @@ postsModel.getAllPosts = async (query) => {
             },
             { $addFields: {likes: {$size: "$likes"}}}
         ]);
- 
-       // responseData = responseData.length ? responseData[0] : responseData;
 
         return responseData;
     }

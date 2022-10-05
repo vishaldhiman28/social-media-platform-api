@@ -39,4 +39,15 @@ likesUnlikesModel.getLikesOrDislikes = async (query) => {
     }
 }
 
+likesUnlikesModel.deleteLikesUnlikes = async (query) => {
+    try {
+	    let responseData = await DBModel.delete (query);
+        return responseData;
+    }
+    catch (err) { 
+        console.error ( { err : err.stack,  data : { query, updates } }, 'unknown error occured during delete op for likesUnlikesModel in the db');
+        throw "delete op failed for likesUnlikesModel";
+    }
+}
+
 module.exports = likesUnlikesModel;

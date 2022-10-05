@@ -1,6 +1,8 @@
 const moment        = require ('moment');
 const followerModel = require ('models/follower'); 
-
+const { 
+    followees
+}            = require ('config')
 const follow = { };
 
 follow.addFollower = async ({ reqId, followeeId, userId }) => {
@@ -22,7 +24,21 @@ follow.addFollower = async ({ reqId, followeeId, userId }) => {
 
 		/*
 			we can add a check here, to see if given followee id is in our system or not.
-			right now I am assuming we have followee in our system
+			right now i have defined valid followees in config
+		*/
+
+		if (!followees.includes (followeeId)) {
+			console.error ( { reqId , data: { followeeId }}, 'followeeId is invalid.');
+
+            responseData.statusCode = 400;
+            responseData.msg        = 'Followee Id is invalid.';
+
+            return responseData;
+		}
+
+		/*
+			we can add check if user already follows give followee
+		    currently it will throw errro because of duplicate key 
 		*/
 
 		await followerModel.follow ({
@@ -56,6 +72,20 @@ follow.removeFollower = async ({ reqId, followeeId, userId }) => {
 
             responseData.statusCode = 400;
             responseData.msg        = 'Followee Id missing.';
+
+            return responseData;
+		}
+
+		/*
+			we can add a check here, to see if given followee id is in our system or not.
+			right now i have defined valid followees in config
+		*/
+
+		if (!followees.includes (followeeId)) {
+			console.error ( { reqId , data: { followeeId }}, 'followeeId is invalid.');
+
+            responseData.statusCode = 400;
+            responseData.msg        = 'Followee Id is invalid.';
 
             return responseData;
 		}
