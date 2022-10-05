@@ -36,12 +36,21 @@ follow.addFollower = async ({ reqId, followeeId, userId }) => {
             return responseData;
 		}
 
-		/*
-			we can add check if user already follows give followee
-		    currently it will throw errro because of duplicate key 
-		*/
+		let alreadyFollowResult = followerModel.getFollowersData ( { 
+			userId,
+			followeeId,
+		})
 
-		await followerModel.follow ({
+		if (alreadyFollowResult && alreadyFollowResult.length) {
+			console.error ( { reqId , data: { followeeId }}, 'already following');
+
+            responseData.statusCode = 400;
+            responseData.msg        = 'Already following.';
+
+            return responseData;
+		}
+
+		let followResult = await followerModel.follow ({
 			userId,
 			followeeId
 		})
@@ -49,7 +58,7 @@ follow.addFollower = async ({ reqId, followeeId, userId }) => {
 		responseData.statusCode = 200;
         responseData.msg        = `User now following ${followeeId}`;
 
-		console.debug ({ reqId, data : responseData}, 'user follow success.');
+		console.debug ({ reqId, data : responseData, followResult}, 'user follow success.');
 
 		return responseData;
 	}
