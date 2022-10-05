@@ -6,7 +6,7 @@ services:
            restart: always
            build: .
            ports:
-             - "80:11395"
+             - "443:11395"
            links:
              - mongo
        mongo:
@@ -15,4 +15,4 @@ services:
              volumes:
                - ./data:/data/db
              ports:
-               - '27018:27017'
+               - '27017:27017'
