@@ -24,7 +24,7 @@ commentsModel.addComment = async (inputData) => {
 
 commentsModel.deleteComments = async (inputData) => {
     try {
-	    let responseData = await DBModel.delete (inputData);
+	    let responseData = await DBModel.remove (inputData);
         return responseData;
     }
     catch (err) { 

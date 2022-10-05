@@ -73,7 +73,7 @@ contoller.deletePost = async (req, res) => {
 		res.status (successStatusCode).send (JSON.stringify (deletePostResult));
 	}
 	catch (err) {
-		console.error ( { reqId, err : err.stack,  data : { title, desc, userId } }, 'error in deleting post');
+		console.error ( { reqId, err : err.stack,  data : { reqId, postId, userId } }, 'error in deleting post');
 		res.status (internalErrorStatusCode).send (
 			new ErrorSerialize (
 				errorConfig[internalErrorStatusCode], 

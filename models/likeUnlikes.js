@@ -41,7 +41,7 @@ likesUnlikesModel.getLikesOrDislikes = async (query) => {
 
 likesUnlikesModel.deleteLikesUnlikes = async (query) => {
     try {
-	    let responseData = await DBModel.delete (query);
+	    let responseData = await DBModel.remove (query);
         return responseData;
     }
     catch (err) { 
